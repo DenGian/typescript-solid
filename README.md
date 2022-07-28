@@ -121,7 +121,9 @@ let result = add(input1.value, input2.value);
 2. Search for 'TypeScript'
 
 3. Check if TypeScript is compatible with your current node version
+
 ![Node version check](images/nodeVersion.png)
+
 4. To check your Node version (you should have it installed by now), go to your terminal and type:
 ````
 node -v
@@ -191,7 +193,22 @@ Another option is to click on the "compile" button at the bottom of your editor.
 
 #### Via NPM
 
-1. 
+1. Run the following command in your terminal
+````
+npm install -g parcel-bundler
+````
+
+2. There could be some vulnerabilities, if so run:
+````
+npm audit fix
+````
+
+3. To check if all vulnerabilities are dealt with run
+````
+npm auit
+````
+
+The audit command submits a description of the dependencies configured in your project to your default registry and asks for a report of known vulnerabilities.
 
 #### What is Parcel
 
@@ -199,6 +216,28 @@ Parcel is a web application bundler, that will compile all the JS code, parcel s
 
 Parcel automatically transpiles TypeScript whenever you use a ````.ts```` or ````.tsx```` file.  
 In addition to stripping the types to convert TypeScript to JavaScript, Parcel also compiles modern language features like classes and async await as necessary, according to your browser targets. It also transpiles JSX automatically.
+
+---
+
+## Chapter 3: SOLID Principles
+
+![img.png](images/SOLID.png)
+
+SOLID is a set of 5 principles that helps you write good OOP code, and is considered one of the leading theories for modern code.
+
+1. Single responsibility
+2. Open closed principle
+3. Liskov substitution
+4. Interface segregation
+5. Dependency inversion
+
+SOLID
+
+The 5 principles all serve the same purpose:
+
+*To create understandable, readable, and testable code that many developers can collaboratively work on.*
+
+In the directory 'SOLID' you will find each principle, how they work and are applied.  
 
 ---
 ## Sources
@@ -211,3 +250,6 @@ In addition to stripping the types to convert TypeScript to JavaScript, Parcel a
   - Parcel: 
     - https://parceljs.org/docs/
     - https://parceljs.org/languages/typescript/#babel
+    - https://github.com/parcel-bundler/parcel
+- Chapter 3: https://www.npmjs.com/package/parcel-bundler
+  - https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/
