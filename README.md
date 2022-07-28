@@ -195,6 +195,11 @@ Another option is to click on the "compile" button at the bottom of your editor.
 
 #### What is Parcel
 
+Parcel is a web application bundler, that will compile all the JS code, parcel supports TypeScript out of the box without any additional configuration.
+
+Parcel automatically transpiles TypeScript whenever you use a ````.ts```` or ````.tsx```` file.  
+In addition to stripping the types to convert TypeScript to JavaScript, Parcel also compiles modern language features like classes and async await as necessary, according to your browser targets. It also transpiles JSX automatically.
+
 ---
 ## Sources
 - Chapter 1:
@@ -204,3 +209,5 @@ Another option is to click on the "compile" button at the bottom of your editor.
   - HomeBrew: https://brew.sh/
   - TypeScript: https://formulae.brew.sh/formula/typescript#default
   - Parcel: 
+    - https://parceljs.org/docs/
+    - https://parceljs.org/languages/typescript/#babel
