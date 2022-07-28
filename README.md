@@ -187,9 +187,13 @@ Another option is to click on the "compile" button at the bottom of your editor.
 
 ![install-phpstorm-compile-button](images/install-phpstorm-2.png)
 
-#### Parcel
+### Parcel
 
+#### Via NPM
 
+1. 
+
+#### What is Parcel
 
 ---
 ## Sources
