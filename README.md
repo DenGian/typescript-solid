@@ -108,11 +108,77 @@ let result = add(input1.value, input2.value);
 … the TypeScript compiler will issue an error if you compile the TypeScript code into JavaScript. Hence, you can prevent the error from happening at runtime.
 
 ---
+## Chapter 2: The installation (Mac OS - Apple Silicon)
 
-## Chapter 2: The installation
+### For HomeBrew
+1. go to HomeBrew:
 
+- https://brew.sh/
+
+2. Search for 'TypeScript'
+
+3. Check if TypeScript is compatible with your current node version
+![Node version check](images/nodeVersion.png)
+4. To check your Node version (you should have it installed by now), go to your terminal and type:
+````
+node -v
+````
+
+If your current version of node is compatible with TypeScript skip to step 12, otherwise continue with the next step
+
+5. Check if your system is up-to-date by running the following command
+
+````
+brew upgrade
+````
+
+6. To update your Node version, go back to HomeBrew
+7. Search for 'Node' and run the command or just copy pasta the next command
+````
+brew install node
+````
+7. Check what version you are running now, with:
+
+````
+node -v
+````
+
+It should still show you the original version you were running, to fix this go to the next step, otherwise skip to step 12
+
+8. Open your zshrc with the following command:
+````
+nano open /User/yourUserNameHere/.zshrc
+````
+you should have the path to your current Node version here
+
+9. you can delete the path, but I recommend **commenting it out** (this way, if you need the stable version or a previous version for a project, you can simply uncomment it)
+
+10. Check if your system is in order
+````
+brew doctor 
+````
+
+11. Now you should have your compatible Node version
+````
+node -v
+````
+
+12. To install TypeScript run:
+````
+brew install typescript
+````
+
+13. Now you have TypeScript! Type the following command :)
+````
+tsc
+````
+
+
+
+---
 ## Sources
 - Chapter 1:
   - https://www.typescripttutorial.net/typescript-tutorial/what-is-typescript/
   - https://www.typescriptlang.org/
-  - 
+- Chapter 2:
+  -
