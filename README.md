@@ -247,9 +247,9 @@ In the directory 'SOLID' you will find each principle, how they work and are app
 - Chapter 2:
   - HomeBrew: https://brew.sh/
   - TypeScript: https://formulae.brew.sh/formula/typescript#default
-  - Parcel: 
+  - Parcel: https://www.npmjs.com/package/parcel-bundler
     - https://parceljs.org/docs/
     - https://parceljs.org/languages/typescript/#babel
     - https://github.com/parcel-bundler/parcel
-- Chapter 3: https://www.npmjs.com/package/parcel-bundler
+- Chapter 3: 
   - https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/
