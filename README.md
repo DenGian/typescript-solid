@@ -111,6 +111,9 @@ let result = add(input1.value, input2.value);
 ## Chapter 2: The installation (Mac OS - Apple Silicon)
 
 ### For HomeBrew
+
+#### TypeScript
+
 1. go to HomeBrew:
 
 - https://brew.sh/
@@ -173,6 +176,19 @@ brew install typescript
 tsc
 ````
 
+#### PhpStorm integration
+
+There are 2 ways of working with TypesScript in your IDE, the first option is to make it so all TypeScript files are compiled the moment you change something in the file.
+To do this go to ```File | Settings | Languages & Frameworks | TypeScript```. Make sure to check the correct checkbox.
+
+![install-phpstorm-on-change](images/install-phpstorm-1.png)
+
+Another option is to click on the "compile" button at the bottom of your editor. You can then either recompile the file you are currently in, or all files in the entire project.  
+
+![install-phpstorm-compile-button](images/install-phpstorm-2.png)
+
+#### Parcel
+
 
 
 ---
@@ -181,4 +197,6 @@ tsc
   - https://www.typescripttutorial.net/typescript-tutorial/what-is-typescript/
   - https://www.typescriptlang.org/
 - Chapter 2:
-  -
+  - HomeBrew: https://brew.sh/
+  - TypeScript: https://formulae.brew.sh/formula/typescript#default
+  - Parcel: 
