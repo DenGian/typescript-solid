@@ -7,7 +7,7 @@ There are a couple of problems with this:
 
 - The Car class is a classic example of a so-called “God object” — that is, an object that knows about and does everything. These types of objects are really hard to maintain, extend and test.
 - We have to prefix every variable with the correct domain eg. "engineStatus". It would be nicer to just name it "Status" but we cannot do this in the car because you might confuse it with the status of the MusicPlayer.
-- What if want different types of engines with different ways of consuming fuel? We would have to put a lot of extra if-statements in our car class.
+- What if we want different types of engines with different ways of consuming fuel? We would have to put a lot of extra if-statements in our car class.
 
 ## Your mission
 Look at the old.ts file and open the index.html file, you can see the software has some options to handle fuel, music and the engine. However, these are really 3 separate domains making the current Car object really strange.
