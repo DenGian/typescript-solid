@@ -205,10 +205,12 @@ npm audit fix
 
 3. To check if all vulnerabilities are dealt with run
 ````
-npm auit
+npm audit
 ````
 
 The audit command submits a description of the dependencies configured in your project to your default registry and asks for a report of known vulnerabilities.
+
+![img.png](images/greatJob.png)
 
 #### What is Parcel
 
@@ -231,7 +233,7 @@ SOLID is a set of 5 principles that helps you write good OOP code, and is consid
 4. Interface segregation
 5. Dependency inversion
 
-SOLID
+### !SOLID!
 
 The 5 principles all serve the same purpose:
 
