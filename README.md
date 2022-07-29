@@ -233,13 +233,13 @@ In addition to stripping the types to convert TypeScript to JavaScript, Parcel a
 
 SOLID is a set of 5 principles that helps you write good OOP code, and is considered one of the leading theories for modern code.
 
-1. Single responsibility
-2. Open closed principle
-3. Liskov substitution
-4. Interface segregation
-5. Dependency inversion
+1. S: Single responsibility principle.
+2. O: Open–closed principle. 
+3. L: Liskov substitution principle. 
+4. I: Interface segregation principle. 
+5. D: Dependency inversion principle.
 
-### !SOLID!
+### ➡️ SOLID
 
 The 5 principles all serve the same purpose:
 
