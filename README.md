@@ -210,6 +210,11 @@ npm audit
 
 The audit command submits a description of the dependencies configured in your project to your default registry and asks for a report of known vulnerabilities.
 
+4. Now you are able to run the following command in your project directory
+````
+parcel index.html
+````
+
 ![img.png](images/greatJob.png)
 
 #### What is Parcel
