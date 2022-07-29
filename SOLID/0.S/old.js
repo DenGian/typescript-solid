@@ -14,11 +14,11 @@ var Car = /** @class */ (function () {
         get: function () {
             return this._miles;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Object.defineProperty(Car.prototype, "musicLevel", {
-        //Take attention to these getter and setters
+        //Take attention to these getters and setters
         get: function () {
             return this._musicLevel;
         },
@@ -26,7 +26,7 @@ var Car = /** @class */ (function () {
             this._musicLevel = value;
             this._oldMusicLevel = value;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Car.prototype.turnMusicOn = function () {
@@ -39,7 +39,7 @@ var Car = /** @class */ (function () {
         get: function () {
             return this._fuel;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     //When a value can only go one way (you add fuel, consuming fuel is handled by the car itself)
@@ -52,7 +52,7 @@ var Car = /** @class */ (function () {
         get: function () {
             return this._engineStatus;
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     Car.prototype.turnEngineOn = function () {
