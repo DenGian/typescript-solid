@@ -20,7 +20,7 @@ class Car {
         return this._miles;
     }
 
-//Take attention to these getter and setters
+//Take attention to these getters and setters
     get musicLevel(): number {
         return this._musicLevel;
     }
