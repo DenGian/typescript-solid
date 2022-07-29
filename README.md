@@ -214,6 +214,7 @@ The audit command submits a description of the dependencies configured in your p
 ````
 parcel index.html
 ````
+For this command, do keep the pathing in mind. (where is your index.html file located)
 
 ![img.png](images/greatJob.png)
 
