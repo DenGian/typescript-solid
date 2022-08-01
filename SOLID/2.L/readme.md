@@ -47,9 +47,29 @@ class Square extends Rectangle {
 }
 ````
 
+By looking at the above scenario you might still argue that it looks pretty consistent.  
+That is true for the language you are coding in and also for Mathematics but a Square might not always satisfy the behavior of a Rectangle.
+
+**For example**
+
+````typescript
+void clientMethod(Rectangle rec){
+    rec.setWidth(5);
+    rec.setHeight(4);
+    assert (rec.area() === 20);
+}
+````
+
+The ````ClientMethod()```` expects a Rectangle and asserts a value of the area.  
+All was well up to this point but now when we do ````rec.setHeight(4)````, the Square will set both its sides as 4, and that will totally mess up the assert statement.
+
+We were expecting a Rectangle of sides 5 and 4 to have an area of 20, but we got a Square with sides 4 and 4 and area 16.
+
+**Hence, using Square’s object in place of the Rectangle’s object totally breaks LSP!**
+
 ![img.png](../../images/square.png)
 
-
+---
 
 "Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program." See also [design by contract](https://en.wikipedia.org/wiki/Design_by_contract).
 
@@ -63,3 +83,8 @@ Look at the old.ts file and open the index.html file, refactor the Discount clas
 
 ### Discuss
 Do you understand what the use is of having the class NoDiscount? This prevents us from having to write extra if-statements inside product to check if we actually have a Discount dependency. It might look strange but these null or void classes are very common in a lot of popular libraries!
+
+---
+## Sources
+- Chapter 1:
+  - https://blog.knoldus.com/what-is-liskov-substitution-principle-lsp-with-real-world-examples/
