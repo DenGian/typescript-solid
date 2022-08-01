@@ -11,7 +11,7 @@
 
 <h1>Single responsibility principle</h1>
 
-<img src="car.png">
+<img src="car.png" alt="car">
 
 <p>Car has driven <span id="miles-value">0</span> KM.</p>
 
@@ -21,7 +21,7 @@
 
 <fieldset>
     <legend>Music</legend>
-    <input type="range" id="music-slider" min="0" max="100" value="0" />
+    <label for="music-slider"></label><input type="range" id="music-slider" min="0" max="100" value="0" />
 
     <button id="music-toggle">Turn music on</button>
 </fieldset>
@@ -35,7 +35,7 @@
     <fieldset>
         <legend>Fuel</legend>
 
-        <input type="number" placeholder="Fuel in liters" id="add-fuel-input"/>
+        <label for="add-fuel-input"></label><input type="number" placeholder="Fuel in liters" id="add-fuel-input"/>
         <button type="submit">Add fuel</button>
         <p>Fuel: <span id="fuel-level">0</span> liters</p>
     </fieldset>
