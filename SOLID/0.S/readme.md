@@ -186,6 +186,7 @@ get miles(): number {
     }
 ````
 
+[//]: # (ToDo: finish this part with old + new code)
 
 ---
 ## Chapter 4: Summary 
