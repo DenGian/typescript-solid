@@ -14,7 +14,7 @@ As a commonly used definition, "every class should have only one reason to chang
 Consider the example below:
 
 
-````javascript
+````typescript
 public class Student {
 
      public void registerStudent() {
@@ -42,21 +42,21 @@ Imagine a new developer joining a team with this sort of logic with a codebase o
 
 Now let's fix this!
 
-````javascript
+````typescript
 public class StudentRegister {
 public void registerStudent() {
 // some logic
 }
 }
 ````
-````javascript
+````typescript
 public class StudentResult {
 public void calculate_Student_Result() {
 // some logic
 }
 }
 ````
-````javascript
+````typescript
 public class StudentEmails {
 public void sendEmail() {
 // some logic
@@ -109,9 +109,83 @@ Make a new type of Engine that also consumes Fuel
 
 ### 3.2 Show me the code
 
+![img.png](../../images/showMeCodeMeme.png)
+
+#### 3.2.1 The original code (bad)
+
+1. The class
+```` typescript
+class Car {
+````
+We are working in the class 'car'
+
+2. The properties of the class 'car'
+````typescript
+ private _musicLevel : number = 0;
+    private _oldMusicLevel : number = 50;
+    private _fuel : number = 0;
+    private _miles : number = 0;
+    private _engineStatus: boolean = false;
 ````
 
+![img.png](../../images/theRock.png)
+
+→ Hmmmm something is off, there are underscores before the properties.
+
+- it is convention to start property names in TypeScript with an underscore.
+
+#### Why?
+
+- If you want to use ````get```` and ````set```` accessors, you have to prefix the private property with underscore
+
+3. readonly properties??
+````typescript
+ private readonly MAXIMUM_FUEL_CAPACITY: number;
+ private readonly FUEL_MILEAGE: number = 10;
 ````
+
+→ By changing this variable to ````readonly```` we have in essence created a property constant
+
+Prefix ````readonly```` is used to make a property as read-only.  
+Read-only members can be accessed outside the class, but their value cannot be changed.  
+Since read-only members cannot be changed outside the class, they either need to be initialized at declaration or initialized inside the class constructor.
+
+4. The constructor
+````typescript
+  constructor(MAXIMUM_FUEL_CAPACITY: number) {
+        this.MAXIMUM_FUEL_CAPACITY = MAXIMUM_FUEL_CAPACITY;
+    }
+````
+
+5. Getters and Setters
+````typescript
+get miles(): number {
+        return this._miles;
+    }
+
+//Pay attention to these getters and setters
+    get musicLevel(): number {
+        return this._musicLevel;
+    }
+
+    set musicLevel(value: number) {
+        this._musicLevel = value;
+        this._oldMusicLevel = value;
+    }
+
+    turnMusicOn() {
+        this._musicLevel = this._oldMusicLevel;
+    }
+
+    turnMusicOff() {
+        this._musicLevel = 0;
+    }
+
+    get fuel(): number {
+        return this._fuel;
+    }
+````
+
 
 ---
 ## Chapter 4: Summary 
@@ -132,5 +206,10 @@ We should analyze how making the responsibilities of components smaller or large
   - https://www.freecodecamp.org/news/solid-principles-single-responsibility-principle-explained/
 - Chapter 2:
   - https://stackify.com/solid-design-principles/
+- Chapter 3:
+  - Naming convention TypeScript:
+    - https://stackoverflow.com/questions/40587873/naming-convention-for-class-properties-in-typescript?rq=1
+  - readonly:
+    - https://www.tutorialsteacher.com/typescript/typescript-readonly
 - Chapter 4:
   - https://reflectoring.io/single-responsibility-principle/
