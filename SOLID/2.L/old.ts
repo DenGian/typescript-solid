@@ -1,4 +1,4 @@
-//This is called a Union, the discountType can only contain the following 2 values:
+//This is called a Union, the discountType can only contain the following 3 values:
 type discountType = "variable" | "fixed" | "none";
 
 class Discount {
