@@ -1,4 +1,30 @@
-# Interface segregation principle
+# Interface segregation principle (solId)
+
+## MaTS
+
+![ISP](../../images/isp.png)
+
+---
+
+## Chapter 1: What is the Interface segregation principle?
+
+### *“Clients should not be forced to depend upon interfaces that they do not use.”*
+
+Sounds obvious, doesn’t it? Well, it’s pretty easy to violate this interface, especially if your software evolves, and you have to add more and more features. But more about that later.
+
+Similar to the Single Responsibility Principle, the goal of the Interface Segregation Principle is to reduce the side effects and frequency of required changes by splitting the software into multiple, independent parts.
+
+As I will show you in the following example, this is only achievable if you define your interfaces so that they fit a specific client or task.
+
+### Chapter 1.1 Violating ISP
+
+
+
+
+
+
+
+
 "Many client-specific interfaces are better than one general-purpose interface."
 
 Interfaces are really good, but like with everything that is good you can go overboard. It is really important that when we create interfaces that are precise and modular. 
@@ -41,3 +67,9 @@ As an extra difficulty, there is a feature request for a google bot to be able t
 
 ### Exercise: Step 2 (Optional)
 You might notice that both the Google and Facebook code is almost identical, could you maybe refactor this code to small, separate dependencies?
+
+## Sources
+
+- Chapter 1:
+  - https://stackify.com/interface-segregation-principle/
+  - 
