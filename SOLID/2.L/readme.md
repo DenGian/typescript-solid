@@ -210,16 +210,14 @@ class shoppingBasket {
     }
 }
 ````
-5. 
+5. Creating products + showing on page
 ````typescript
 let cart = new shoppingBasket();
 cart.addProduct(new Product('Chair', 25, new Discount("fixed", 10)));
 //cart.addProduct(new Product('Chair', 25, new Discount("fixed", -10)));
 cart.addProduct(new Product('Table', 50, new Discount("variable", 25)));
 cart.addProduct(new Product('Bed', 100, new Discount("none")));
-````
-6. 
-````typescript
+
 const tableElement = document.querySelector('#cart tbody');
 cart.products.forEach((product) => {
     let tr = document.createElement('tr');
@@ -253,7 +251,123 @@ interface Discount {
     showCalculation(price: number) : string;
 }
 ````
+2. class Variable
+````typescript
+class Variable implements Discount{
+    private _value: number;
 
+    constructor(value: number) {
+        this._value = value;
+    }
+
+    apply(price: number): number {
+        return price - (price * this._value / 100);
+    }
+
+    showCalculation(price: number): string {
+        return price + " € -  " + this._value + "%";
+    }
+}
+
+````
+making a class for each possible value of ````discount```` 
+3. class Fixed
+````typescript
+class Fixed implements Discount{
+    private _value: number;
+
+    constructor(value: number) {
+        this._value = value;
+    }
+
+    apply(price: number): number {
+        return Math.max(0, price - this._value);
+    }
+
+    showCalculation(price: number): string {
+        return price + "€ -  " + this._value + "€ (min 0 €)";
+    }
+}
+````
+4. class NoDiscount
+````typescript
+class NoDiscount implements Discount{
+  apply(price: number): number {
+    return price;
+  }
+  showCalculation(price: number): string {
+    return "No discount";
+  }
+}
+````
+you might have noticed all classes ````implement```` the ````interface```` 
+5. class Product
+````typescript
+class Product {
+    private _name: string;
+    private _price: number;
+    private _discount: Variable | Fixed | NoDiscount;
+
+    constructor(name: string, price: number, discount: Variable | Fixed | NoDiscount) {
+        this._name = name;
+        this._price = price;
+        this._discount = discount;
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
+    get discount(): Variable | Fixed | NoDiscount {
+        return this._discount;
+    }
+
+    get originalPrice(): number {
+        return this._price;
+    }
+
+    //The reason we call this function "calculateX" instead of using a getter on Price is because names communicate a lot of meaning between programmers.
+    //most programmers would assume a getPrice() would be a simple display of a property that is already calculated, but in fact this function does a (more expensive) operation to calculate on the fly.
+    calculatePrice(): number {
+        return this._discount.apply(this._price);
+    }
+
+    showCalculation(): string {
+        return this._discount.showCalculation(this._price);
+    }
+}
+````
+6. creating products + showing on page
+````typescript
+let cart = new shoppingBasket();
+cart.addProduct(new Product('Chair', 25, new Fixed(10)));
+//cart.addProduct(new Product('Chair', 25, new Discount("fixed", -10)));
+cart.addProduct(new Product('Table', 50, new Variable(25)));
+cart.addProduct(new Product('Bed', 100, new NoDiscount()));
+
+const tableElement = <HTMLTableElement>document.querySelector('#cart tbody');
+cart.products.forEach((product) => {
+  let tr = document.createElement('tr');
+
+  let td = document.createElement('td');
+  td.innerText = product.name;
+  tr.appendChild(td);
+
+  td = document.createElement('td');
+  td.innerText = product.originalPrice.toFixed(2) + " €";
+  tr.appendChild(td);
+
+  td = document.createElement('td');
+  td.innerText = product.calculatePrice().toFixed(2) + " €";
+  tr.appendChild(td);
+
+  td = document.createElement('td');
+  td.innerText = product.showCalculation();
+  tr.appendChild(td);
+
+  tableElement.appendChild(tr);
+});
+````
 ---
 ## Sources
 - Chapter 1:
