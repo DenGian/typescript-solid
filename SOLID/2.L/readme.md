@@ -85,10 +85,22 @@ There is still some confusion around Liskov substitution principle for me, so he
 
 ![LSP](../../images/lsp2.png)
 
-## Chapter 3: 
+### Chapter 3: More practical implementation
+
+The principle defines that objects of a superclass shall be replaceable with objects of its subclasses without breaking the application.  
+That requires the objects of your subclasses to behave in the same way as the objects of your superclass. You can achieve that by following a few rules, which are pretty similar to the [design by contract](https://en.wikipedia.org/wiki/Design_by_contract).
 
 
-"Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program." See also [design by contract](https://en.wikipedia.org/wiki/Design_by_contract).
+### Chapter 3.1: Design by contract
+
+![DBC](../../images/dbc.png)  
+A design by contract scheme
+
+### Chapter 3.2: Enforcing LSP
+
+If you decide to apply this principle to your code, the behavior of your classes becomes more important than its structure. Unfortunately, there is no easy way to enforce this principle.  
+
+You need to implement your own checks to ensure that your code follows the Liskov Substitution Principle. In the best case, you do this via code reviews and test cases. In your test cases, you can execute a specific part of your application with objects of all subclasses to make sure that none of them causes an error or significantly changes its performance. You can try to do similar checks during a code review. But what’s even more important is that you check that you created and executed all the required test cases.
 
 ## Chapter 4: Implementation
 
@@ -99,14 +111,14 @@ Look at the old.ts file and open the index.html file, refactor the Discount clas
 #### Discuss
 Do you understand what the use is of having the class NoDiscount? This prevents us from having to write extra if-statements inside product to check if we actually have a Discount dependency. It might look strange but these null or void classes are very common in a lot of popular libraries!
 
-#### Polymorphism
-You might already be aware of Polymorphism, but just to remind you, here is the short summary:
-If 2 different classes use **the same interface**, so they have the same function names: the code that uses this class does not care about which one class it receives.
+#### Chapter 4.2: Polymorphism
+You might already be aware of Polymorphism, but just to remind you, here is the short summary:  
+If 2 different classes use **the same interface**, so they have the same function names: the code that uses this class does not care about which one class it receives.  
 In short: When two objects have the same interface, they are functionally interchangeable = polymorphism.
 
-### Chapter 4.2: Show me the code
+### Chapter 4.3: Show me the code
 
-#### Chapter 4.2.1: The original code (bad)
+#### Chapter 4.3.1: The original code (bad)
 
 1. 
 ````typescript
@@ -242,7 +254,7 @@ cart.products.forEach((product) => {
 });
 ````
 
-#### Chapter 4.1.2: The improved code
+#### Chapter 4.3.2: The improved code
 
 1. Interface
 ````typescript
@@ -251,7 +263,9 @@ interface Discount {
     showCalculation(price: number) : string;
 }
 ````
-2. class Variable
+add text here
+2. class Variable  
+Here I am making a class for each possible value of ````discount````
 ````typescript
 class Variable implements Discount{
     private _value: number;
@@ -268,9 +282,7 @@ class Variable implements Discount{
         return price + " € -  " + this._value + "%";
     }
 }
-
 ````
-making a class for each possible value of ````discount```` 
 3. class Fixed
 ````typescript
 class Fixed implements Discount{
@@ -301,6 +313,7 @@ class NoDiscount implements Discount{
 }
 ````
 you might have noticed all classes ````implement```` the ````interface```` 
+add text here
 5. class Product
 ````typescript
 class Product {
@@ -337,6 +350,7 @@ class Product {
     }
 }
 ````
+add text here 
 6. creating products + showing on page
 ````typescript
 let cart = new shoppingBasket();
@@ -368,11 +382,25 @@ cart.products.forEach((product) => {
   tableElement.appendChild(tr);
 });
 ````
+add text here
+
 ---
+## Chapter 5: Summary
+
+The Liskov Substitution Principle extends the Open/Closed principle and enables you to replace objects of a parent class with objects of a subclass without breaking the application. This requires all subclasses to behave in the same way as the parent class. To achieve that, your subclasses need to follow these rules:
+
+1. Don’t implement any stricter validation rules on input parameters than implemented by the parent class.
+2. Apply at the least the same rules to all output parameters as applied by the parent class.
+
+
 ## Sources
 - Chapter 1:
   - https://blog.knoldus.com/what-is-liskov-substitution-principle-lsp-with-real-world-examples/
   - https://stackify.com/solid-design-liskov-substitution-principle/
 - Chapter 2:
   -  https://blog.knoldus.com/what-is-liskov-substitution-principle-lsp-with-real-world-examples/
-- Chapter 3: https://stackify.com/solid-design-liskov-substitution-principle/
+- Chapter 3: 
+  - https://stackify.com/solid-design-liskov-substitution-principle/
+  - https://en.wikipedia.org/wiki/Design_by_contract
+- Chapter 5: 
+  - https://stackify.com/solid-design-liskov-substitution-principle/
