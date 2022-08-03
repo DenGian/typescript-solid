@@ -91,6 +91,7 @@ document.querySelector('#login-form').addEventListener('submit', (event) => {
         case (typePasswordElement.checked && loginAsAdminElement.checked):
             user = new Admin();
             auth = user.checkPassword(passwordElement.value);
+            console.log(user);
             break;
         case (loginAsAdminElement.checked && !typePasswordElement.checked):
             alert ('You no enter')
@@ -101,9 +102,25 @@ document.querySelector('#login-form').addEventListener('submit', (event) => {
                 case typePasswordElement.checked:
                     auth = user.checkPassword(passwordElement.value)
                     break;
+                case typeFacebookElement.checked:
+                    user.setFacebookToken('secret_token_fb');
+                    auth = user.getFacebookLogin('secret_token_fb')
+                    break;
+                case typeGoogleElement.checked:
+                    user.setGoogleToken('secret_token_google');
+                    auth = user.checkGoogleLogin('secret_token_google')
+                    break;
             }
+            console.log(user);
             // debugger;
             break;
+    }
+
+    if (typeGoogleElement.checked && !loginAsAdminElement.checked){
+        let user = new GoogleBot();
+        user.setGoogleToken('secret_token_google');
+        auth = user.checkGoogleLogin('secret_token_google')
+        console.log(user);
     }
 
     if (auth) {
@@ -116,7 +133,7 @@ document.querySelector('#login-form').addEventListener('submit', (event) => {
 resetPasswordElement.addEventListener('click', (event) => {
     event.preventDefault();
 
-    let user = loginAsAdminElement.checked ? admin : guest;
+    let user = loginAsAdminElement.checked ? new Admin : new User;
     user.resetPassword();
 });
 
@@ -163,7 +180,7 @@ resetPasswordElement.addEventListener('click', (event) => {
 //     }
 // }
 
-//admin cannot use google or facebook token
+//admin cannot use Google or facebook token
 // class Admin implements UserAuth {
 //     private _password : string = 'admin';
 //
