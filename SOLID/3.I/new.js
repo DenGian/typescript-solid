@@ -62,6 +62,7 @@ document.querySelector('#login-form').addEventListener('submit', function (event
         case (typePasswordElement.checked && loginAsAdminElement.checked):
             user = new Admin();
             auth = user.checkPassword(passwordElement.value);
+            console.log(user);
             break;
         case (loginAsAdminElement.checked && !typePasswordElement.checked):
             alert('You no enter');
@@ -72,9 +73,24 @@ document.querySelector('#login-form').addEventListener('submit', function (event
                 case typePasswordElement.checked:
                     auth = user.checkPassword(passwordElement.value);
                     break;
+                case typeFacebookElement.checked:
+                    user.setFacebookToken('secret_token_fb');
+                    auth = user.getFacebookLogin('secret_token_fb');
+                    break;
+                case typeGoogleElement.checked:
+                    user.setGoogleToken('secret_token_google');
+                    auth = user.checkGoogleLogin('secret_token_google');
+                    break;
             }
+            console.log(user);
             // debugger;
             break;
+    }
+    if (typeGoogleElement.checked && !loginAsAdminElement.checked) {
+        var user_1 = new GoogleBot();
+        user_1.setGoogleToken('secret_token_google');
+        auth = user_1.checkGoogleLogin('secret_token_google');
+        console.log(user_1);
     }
     if (auth) {
         alert('login success');
@@ -85,7 +101,7 @@ document.querySelector('#login-form').addEventListener('submit', function (event
 });
 resetPasswordElement.addEventListener('click', function (event) {
     event.preventDefault();
-    var user = loginAsAdminElement.checked ? admin : guest;
+    var user = loginAsAdminElement.checked ? new Admin : new User;
     user.resetPassword();
 });
 // interface UserAuth {
@@ -128,7 +144,7 @@ resetPasswordElement.addEventListener('click', function (event) {
 //         this._password = prompt('What is your new password?');
 //     }
 // }
-//admin cannot use google or facebook token
+//admin cannot use Google or facebook token
 // class Admin implements UserAuth {
 //     private _password : string = 'admin';
 //
