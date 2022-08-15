@@ -1,4 +1,17 @@
-# Dependency inversion principle
+# Dependency inversion principle (soliD)
+
+## MaTS
+
+![img.png](img.png)
+
+---
+## Chapter 1: What is the Dependency inversion principle?
+
+**It is based on the Open/Closed Principle and the Liskov Substitution Principle.**
+
+The general idea of this principle is as simple as it is important: **High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide utility features**.  
+To achieve that, you need to introduce an **abstraction that decouples the high-level and low-level modules** from each other.
+
 
 At its heart, the DIP is about structure. The manner in which you structure your program entities, and the way in which they interact with one another, has a direct impact on your ability to conform to the rest of the SOLID principles (the benefits of which we have discussed previously.) If your dependencies are mismanaged, then the likelihood of your code being flexible, maintainable, and reusable is drastically diminished.
 
